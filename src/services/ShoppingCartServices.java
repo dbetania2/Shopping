@@ -9,33 +9,32 @@ import java.util.Comparator;
 
 public class ShoppingCartServices implements ShoppingCartInterface {
 
-
-    // Filtrar y mostrar productos con precio > 100 de la categoria LIBRARY
-    public void imprimirProductosLibreriaConPrecioMayorA100(ShoppingCart cart) {
-        System.out.println("Productos en la categoría LIBRERÍA con precio > 100:");
+    // Filter and display products with price > 100 from the LIBRARY category
+    public void printLibraryProductsWithPriceOver100(ShoppingCart cart) {
+        System.out.println("Products in the LIBRARY category with price > 100:");
         cart.getProducts().stream()
                 .filter(product -> product.getPrice() > 100 && product.getType() == Product.Type.LIBRARY)
                 .forEach(System.out::println);
     }
 
-    // Calcular y mostrar la suma total de los precios de todos los productos
-    public double calcularPrecioTotal(ShoppingCart cart) {
+    // Calculate and display the total sum of the prices of all products
+    public double calculateTotalPrice(ShoppingCart cart) {
         return cart.getProducts().stream()
                 .mapToDouble(Product::getPrice)
                 .sum();
     }
 
-    // Calcular y mostrar la suma de los precios de los productos de la categoría ELECTRONICS
-    public double calcularPrecioTotalProductosElectronicos(ShoppingCart cart) {
+    // Calculate and display the total sum of the prices of products from the ELECTRONICS category
+    public double calculateTotalPriceForElectronicProducts(ShoppingCart cart) {
         return cart.getProducts().stream()
                 .filter(product -> product.getType() == Product.Type.ELECTRONIC)
                 .mapToDouble(Product::getPrice)
                 .sum();
     }
 
-    // Imprimir toda la información del carrito ordenada por precio
-    public void imprimirInformacionCarritoOrdenadoPorPrecio(ShoppingCart cart) {
-        System.out.printf("%-10s | %-3s | %-15s | %-20s | %-5s\n", "ID CarT", "ID", "TYPE", "NAME", "PRICE");
+    // Print all shopping cart information sorted by price
+    public void printCartInfoSortedByPrice(ShoppingCart cart) {
+        System.out.printf("%-10s | %-3s | %-15s | %-20s | %-5s\n", "ID Cart", "ID", "TYPE", "NAME", "PRICE");
         System.out.println("-----------------------------------------------------------------------");
 
         cart.getProducts().stream()
@@ -50,10 +49,10 @@ public class ShoppingCartServices implements ShoppingCartInterface {
                 ));
     }
 
-    // Ver productos en el carrito
+    // View products in the cart
     @Override
     public void viewCart(ShoppingCart cart) {
-        System.out.println("Productos en el carrito:");
+        System.out.println("Products in the cart:");
         cart.getProducts().forEach(product ->
                 System.out.printf("%-3s | %-20s | %.2f\n",
                         product.getId(),
@@ -61,10 +60,10 @@ public class ShoppingCartServices implements ShoppingCartInterface {
                         product.getPrice()));
     }
 
-    // Ver detalles de los productos en el carrito (con descripcion)
+    // View details of the products in the cart (with description)
     @Override
     public void viewCartDetails(ShoppingCart cart) {
-        System.out.println("Detalles de los productos en el carrito:");
+        System.out.println("Details of products in the cart:");
         cart.getProducts().forEach(product ->
                 System.out.printf("%-3s | %-20s | %.2f | %s\n",
                         product.getId(),
@@ -75,11 +74,11 @@ public class ShoppingCartServices implements ShoppingCartInterface {
 
     @Override
     public void addProduct(ShoppingCart cart, Product product) {
-
+        // Add product to the cart
     }
 
     @Override
     public void buyProducts(ShoppingCart cart) {
-
+        // Proceed with buying the products in the cart
     }
 }

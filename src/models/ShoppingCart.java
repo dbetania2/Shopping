@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    private static long cartIdCounter = 120300;  // Comienza en 120300 como ejemplo
+    private static long cartIdCounter = 120300;  // Starts at 120300 as an example
     private long id;
     private Customer customer;
     private List<Product> products;
@@ -17,17 +17,18 @@ public class ShoppingCart {
 
     // Constructor
     public ShoppingCart(Customer customer) {
-        this.id = generateCartId();  // Genera un ID unico para el carrito
-        this.products = new ArrayList<>();
-        this.status = Status.DRAFT;
-        this.customer = customer;
+        this.id = generateCartId();  // Generates a unique ID for the cart
+        this.products = new ArrayList<>();  // Initialize empty product list
+        this.status = Status.DRAFT;  // Default status is DRAFT
+        this.customer = customer;  // Assign customer to the cart
     }
 
-    // Metodo para generar un ID unico
+    // Method to generate a unique ID
     private synchronized long generateCartId() {
-        return cartIdCounter++;  // Devuelve el valor actual y luego incrementa
+        return cartIdCounter++;  // Returns current value, then increments
     }
 
+    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -48,25 +49,26 @@ public class ShoppingCart {
         this.status = status;
     }
 
-    // Imprimir toda la informacion del carrito
+    // Print all cart information
     @Override
     public String toString() {
         StringBuilder printCart = new StringBuilder();
 
-        // Secciones
+        // Table headers
         printCart.append(String.format("%-10s | %-3s | %-15s | %-20s | %-5s\n", "Cart ID", "ID", "PRODUCT TYPE", "PRODUCT NAME", "PRICE"));
         printCart.append("-----------------------------------------------------------------------\n");
 
-        // Mostrar productos de la lista sin orden
+        // Display products from the list
         for (Product product : products) {
             printCart.append(String.format("%-10s | %-3s | %-15s | %-20s | %.2f\n",
-                    id, // Cart ID
-                    product.getId(),         // Product ID
-                    product.getType(),      // Product Type
-                    product.getName(),     // Product Name
+                    id,                 // Cart ID
+                    product.getId(),    // Product ID
+                    product.getType(),  // Product Type
+                    product.getName(),  // Product Name
                     product.getPrice())); // Price
         }
 
         return printCart.toString();
     }
 }
+
