@@ -1,10 +1,9 @@
 package models;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Customer {
-    private static long customerIdCounter = 100;  // Comienza en 100 como ejemplo
+    private static long customerIdCounter = 100;  // Starts at 100 as an example
     private long id;
     private String name;
     private String lastName;
@@ -15,7 +14,7 @@ public class Customer {
     private ShoppingCart shoppingCart;
 
     public Customer(String name, String lastName, LocalDate birthDate, String email, String phone, String identificationNumber) {
-        this.id = generateCustomerId();  // Genera un ID unico para el cliente
+        this.id = generateCustomerId();  // Generates a unique ID for the customer
         this.name = name;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -24,9 +23,9 @@ public class Customer {
         this.identificationNumber = identificationNumber;
     }
 
-    // Mutodo para generar un ID unico
+    // Method to generate a unique ID
     private synchronized long generateCustomerId() {
-        return customerIdCounter++;  // Devuelve el valor actual y luego incrementa
+        return customerIdCounter++;  // Returns the current value and then increments
     }
 
     public ShoppingCart getShoppingCart() {
@@ -91,3 +90,4 @@ public class Customer {
                 id, name, lastName, identificationNumber);
     }
 }
+

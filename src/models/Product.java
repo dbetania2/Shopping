@@ -1,9 +1,8 @@
 package models;
 
-import java.util.UUID;
 
 public class Product {
-    private static long productIdCounter = 1;  // Comienza en 1
+    private static long productIdCounter = 1;  // Starts at 1
     private long id;
     private double price;
     private String name;
@@ -11,7 +10,7 @@ public class Product {
     private Type type;
 
     public Product(double price, String name, String description, Type type) {
-        this.id = generateProductId();  // Genera un ID unico
+        this.id = generateProductId();  // Generates a unique ID
         this.price = price;
         this.name = name;
         this.description = description;
@@ -22,7 +21,7 @@ public class Product {
         LIBRARY, ELECTRONIC, OTHER
     }
 
-    // Getters y Setters
+    // Getters and Setters
     public long getId() { return id; }
     public double getPrice() { return price; }
     public String getName() { return name; }
@@ -34,15 +33,16 @@ public class Product {
     public void setDescription(String description) { this.description = description; }
     public void setType(Type type) { this.type = type; }
 
-    // Metodo para generar un ID unico
+    // Method to generate a unique ID
     private synchronized long generateProductId() {
-        return productIdCounter++;  // Incrementa el contador
+        return productIdCounter++;  // Increments the counter
     }
 
-    // toString
+    // toString method
     @Override
     public String toString() {
         return String.format("%-10s | %-3s | %-15s | %-20s | %.2f",
                 id, type, name, description, price);
     }
 }
+
